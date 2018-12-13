@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            //Requests all data from from the audits page
+            //Requests all getData from from the audits page
             call.enqueue(object : Callback<Models.Balance> {
                 override fun onResponse(call: Call<Models.Balance>, response: Response<Models.Balance>) {
                     println(response.body())
@@ -55,43 +55,12 @@ class MainActivity : AppCompatActivity() {
                     balText.text = t.message
                 }
             })
-        //GET VIEW STUFF
-        val httpClient2 = OkHttpClient.Builder().build()
 
-
-
-        val builder2 = Retrofit.Builder()
-            .baseUrl("https://api.simbachain.com/v1/ioscardemo2/")
-            .addConverterFactory(GsonConverterFactory.create())
-
-        val retrofit2 = builder2.client(httpClient2).build()
-
-        val client2 = retrofit2.create(Methods::class.java!!)
-
-        val call2 = client2.getCar()
-
-
-
-        //Requests all data from from the audits page
-        call2.enqueue(object : Callback<Models.GetCars> {
-            override fun onResponse(call: Call<Models.GetCars>, response: Response<Models.GetCars>) {
-                println(response.body())
-                val dict = response.body()
-                getText.text = response.body().toString()
-             //   val balList = response.body()?.
-              //  val balConv = balList!!.toDouble() / 1000000000000000000 //The Balance is returned as Wei which is 1/1000000000000000000 Eth. That is the purpose behind the division
-            //    balText.text = "Balance: " + balConv.toString() + " Eth"
-            }
-
-            override fun onFailure(call: Call<Models.GetCars>, t: Throwable) {
-
-                getText.text = "fail"
-                getText.text = t.message
-
-            }
-        })
     }
+
     fun gotoGet(view: View) {
         this.startActivity(Intent(this, GetActivity::class.java))
     }
+
+
 }

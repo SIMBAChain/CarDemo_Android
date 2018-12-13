@@ -3,52 +3,37 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <TextView
-            android:text="Loading...."
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/myRecyclerView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/filterText"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/make" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="textStart" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"/>
-    <TextView
-            android:text="...."
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/model" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:textAlignment="textStart" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/make"/>
-    <TextView
-            android:text="...."
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/vin" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:textAlignment="textStart" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintHorizontal_bias="0.504" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/model"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/count" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:textAlignment="textStart" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/number" android:text="0000"/>
-    <Button
-            android:text="Get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/myRecyclerView" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:onClick="GetNumber"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/number" android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:inputType="number" android:singleLine="true"/>
+            android:id="@+id/filterText" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text" android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/button"
+            android:selectAllOnFocus="true" android:text="Make"/>
+    <Button
+            android:text="Filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:onClick="filteredGet" android:background="@color/colorAccent" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

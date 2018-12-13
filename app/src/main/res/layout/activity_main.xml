@@ -47,20 +47,4 @@
             android:id="@+id/postButton" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/walletButton"
             android:background="@color/colorPrimary"/>
-    <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="254dp"
-            android:fillViewport="false" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/postButton"
-            app:layout_constraintTop_toBottomOf="@+id/balText"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/scrollView2" android:layout_marginStart="16dp" android:layout_marginEnd="16dp">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical">
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/getText"/>
-        </LinearLayout>
-    </ScrollView>
 </android.support.constraint.ConstraintLayout>
