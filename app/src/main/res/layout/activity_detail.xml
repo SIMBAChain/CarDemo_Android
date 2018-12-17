@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <TextView
+            android:text="Make:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailMake" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:textSize="24sp"/>
+    <TextView
+            android:text="Model:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailModel" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/detailMake" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:textSize="24sp"/>
+    <TextView
+            android:text="VIN:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailVin" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/detailModel" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:textSize="24sp"/>
+    <TextView
+            android:text="IPFS Bundle Hash:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailIPFS" android:textSize="18sp"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/detailVin"
+            android:layout_marginStart="16dp" app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:text="Image Name:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailImageName" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/detailIPFS"/>
+    <TextView
+            android:text="Image Size:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailImageSize" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageName" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"/>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageSize" android:background="@color/colorAccent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="fitCenter"/>
+    <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@android:drawable/ic_dialog_info"
+            android:id="@+id/floatingActionButton" app:backgroundTint="@color/colorPrimary"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+</android.support.constraint.ConstraintLayout>

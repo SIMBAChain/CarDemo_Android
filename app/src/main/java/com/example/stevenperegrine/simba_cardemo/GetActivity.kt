@@ -1,11 +1,14 @@
 package com.example.stevenperegrine.simba_cardemo
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_get.*
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -23,6 +26,7 @@ class GetActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get)
 
@@ -45,6 +49,9 @@ class GetActivity : AppCompatActivity() {
         //recyclerview stuff
         val recyclerView = findViewById<RecyclerView>(R.id.myRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+
+
+
         //Requests all getData from from the audits page
         call.enqueue(object : Callback<Models.GetCars> {
             override fun onResponse(call: Call<Models.GetCars>, response: Response<Models.GetCars>) {
@@ -56,7 +63,7 @@ class GetActivity : AppCompatActivity() {
 
                 //recyclerview  adapter stuff
                 progressBar.visibility = View.GONE
-                val adapter = CustomAdapter()
+                val adapter = CustomAdapter(this@GetActivity)
                 recyclerView.adapter = adapter
             }
 
@@ -103,17 +110,20 @@ class GetActivity : AppCompatActivity() {
 
                 //recyclerview  adapter stuff
                 progressBar.visibility = View.GONE
-                val adapter = CustomAdapter()
+                val adapter = CustomAdapter(this@GetActivity)
                 recyclerView.adapter = adapter
             }
 
             override fun onFailure(call: Call<Models.GetCars>, t: Throwable) {
 
-
-
             }
         })
+
+
     }
+
+
+
     }
 
 

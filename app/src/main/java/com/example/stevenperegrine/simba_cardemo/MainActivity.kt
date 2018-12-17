@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun gotoGet(view: View) {
+    public fun gotoGet(view: View) {
         this.startActivity(Intent(this, GetActivity::class.java))
     }
 
