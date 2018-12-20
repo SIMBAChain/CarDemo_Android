@@ -22,4 +22,8 @@ interface Methods {
     @Headers("APIKEY: 0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
     @GET
     fun getCarFiltered(@Url url: String): Call<Models.GetCars>
+
+    @Headers("APIKEY: 0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
+    @GET
+    fun getCarImage(@Url url: String): Call<Models.GetImage>
 }

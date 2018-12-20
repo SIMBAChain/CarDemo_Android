@@ -42,14 +42,18 @@ class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyVie
         p0?.textViewId.text = "ID: " + p1.toString()
         p0?.parentLayout.setOnClickListener {
 
-            val resultsRaw = resultsPayload["Raw"] as Map<*, *>
+            //info values
+            val resultsRaw = resultsPayload["raw"] as Map<*, *>
             val tranHash = resultsRaw["data"] as String
             val tranFrom = resultsRaw["from"] as String
             val tranTo = resultsRaw["to"] as String
             val tranStatus = dataList["status"] as String
-            val gasUsed = resultsRaw["gas"] as String
+            val gasUsed = resultsRaw["gas"] as Double
 
-         //   Toast.makeText(myContext, "Hi there Number " + p1.toString() + "!", Toast.LENGTH_LONG).show()
+            //id for getting image
+            val tranId = dataList["id"] as String
+
+
             val intent = Intent(myContext, DetailActivity::class.java)
 
             intent.putExtra("make", resultsMake)
@@ -60,6 +64,7 @@ class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyVie
             intent.putExtra("tranTo", tranTo)
             intent.putExtra("tranStatus", tranStatus)
             intent.putExtra("gasUsed", gasUsed)
+            intent.putExtra("id", tranId)
             myContext.startActivity(intent)
         }
     }

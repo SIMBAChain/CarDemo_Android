@@ -14,5 +14,8 @@ object Models {
                        val results: Any
                      //  val results: MutableMap<String,Any>
                        )
+
+    data class GetImage(val bundle_hash: String,
+                        val manifest: ArrayList<*>)
 }
 

@@ -62,5 +62,7 @@ class MainActivity : AppCompatActivity() {
         this.startActivity(Intent(this, GetActivity::class.java))
     }
 
-
+    public fun gotowalletmenu(view: View) {
+        this.startActivity(Intent(this, WalletMenuActivity::class.java))
+    }
 }

@@ -50,14 +50,50 @@
             android:id="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/detailImageSize" android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageSize"
+            android:background="@color/ic_launcher_background"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:scaleType="fitCenter"/>
+    <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/detailImageSize" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="32dp" android:id="@+id/infoScroll"
+            android:visibility="invisible">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                      android:orientation="vertical">
+            <TextView
+                    android:text="Transaction Hash:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" tools:layout_editor_absoluteY="347dp"
+                    tools:layout_editor_absoluteX="81dp" android:id="@+id/transactionHash"/>
+            <TextView
+                    android:text="Transaction From:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/transactionFrom"/>
+            <TextView
+                    android:text="Transaction To:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/transactionTo"/>
+            <TextView
+                    android:text="Transaction Status:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/transactionStatus"/>
+            <TextView
+                    android:text="GasUsed:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/gasUsedText"/>
+        </LinearLayout>
+    </HorizontalScrollView>
     <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true" app:srcCompat="@android:drawable/ic_dialog_info"
+            app:srcCompat="@android:drawable/ic_dialog_info"
             android:id="@+id/floatingActionButton" app:backgroundTint="@color/colorPrimary"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:useCompatPadding="false"
+            android:clickable="true" android:onClick="infoToggle" android:layout_marginBottom="8dp"
+    />
 </android.support.constraint.ConstraintLayout>
