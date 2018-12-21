@@ -46,5 +46,5 @@
             android:layout_height="wrap_content"
             android:id="@+id/postButton" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/walletButton"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary" android:onClick="gotoPost"/>
 </android.support.constraint.ConstraintLayout>

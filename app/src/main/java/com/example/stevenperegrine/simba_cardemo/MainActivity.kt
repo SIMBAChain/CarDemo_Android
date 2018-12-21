@@ -61,7 +61,9 @@ class MainActivity : AppCompatActivity() {
     public fun gotoGet(view: View) {
         this.startActivity(Intent(this, GetActivity::class.java))
     }
-
+    public fun gotoPost(view: View) {
+        this.startActivity(Intent(this, PostActivity::class.java))
+    }
     public fun gotowalletmenu(view: View) {
         this.startActivity(Intent(this, WalletMenuActivity::class.java))
     }

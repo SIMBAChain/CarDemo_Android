@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="com.example.stevenperegrine.simba_cardemo">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera"
+                  android:required="true" />
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -17,6 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".GetActivity"
+                  android:parentActivityName=".MainActivity">
+            <!-- The meta-getData tag is required if you support API level 15 and lower -->
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".PostActivity"
                   android:parentActivityName=".MainActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
