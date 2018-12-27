@@ -24,7 +24,7 @@ Installation
 Smart Contract
 ************
 
-Here is the smart contract I used for iOS
+Here is the smart contract I used for Android
 
 .. code-block:: python
 
