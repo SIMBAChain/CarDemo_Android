@@ -47,13 +47,19 @@
                     android:value=".MainActivity" />
         </activity>
         <activity android:name=".CreateWalletActivity"
-                  android:parentActivityName=".MainActivity">
+                  android:parentActivityName=".WalletMenuActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".WalletMenuActivity" />
         </activity>
-
+        <activity android:name=".ImportWalletActivity"
+                  android:parentActivityName=".WalletMenuActivity">
+            <!-- The meta-getData tag is required if you support API level 15 and lower -->
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".WalletMenuActivity" />
+        </activity>
     </application>
 
 </manifest>

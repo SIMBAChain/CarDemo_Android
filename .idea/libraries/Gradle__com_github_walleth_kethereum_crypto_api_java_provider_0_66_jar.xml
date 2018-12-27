@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.walleth.kethereum:crypto_api_java_provider:0.66@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.walleth.kethereum/crypto_api_java_provider/0.66/e41b6fbc7ac0bbe37928605b5cf93292a7ce16e5/crypto_api_java_provider-0.66.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.walleth.kethereum/crypto_api_java_provider/0.66/2795a7551509d9167823b59385670f91081ba322/crypto_api_java_provider-0.66-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

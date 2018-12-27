@@ -20,10 +20,15 @@ class MainActivity : AppCompatActivity() {
 
         //get Balance
           //  val localAddress = "0x4c01d2810e6E38947addFD6C5A086C2F62da296B"
-        val localAddress = "/api?module=account&action=Balance&address=0x4c01d2810e6E38947addFD6C5A086C2F62da296B&tag=latest&apikey=8TZXFHXHCEBNSMQZDP64NKS8R4SDHVNWSF"
+
+        if (fileList().contains("address")) {
+
+
+
+            val userAddress = openFileInput("address").readBytes().toString(charset("UTF8"))
+            val urlEnd = "/api?module=account&action=Balance&address=" + userAddress + "&tag=latest&apikey=8TZXFHXHCEBNSMQZDP64NKS8R4SDHVNWSF"
             balText.text = "Loading..."
             val httpClient = OkHttpClient.Builder().build()
-
 
 
             val builder = Retrofit.Builder()
@@ -34,8 +39,7 @@ class MainActivity : AppCompatActivity() {
 
             val client = retrofit.create(Methods::class.java!!)
 
-            val call = client.bal(localAddress)
-
+            val call = client.bal(urlEnd)
 
 
             //Requests all getData from from the audits page
@@ -45,7 +49,8 @@ class MainActivity : AppCompatActivity() {
                     val dict = response.body()
                     balText.text = response.body().toString()
                     val balList = response.body()?.result
-                    val balConv = balList!!.toDouble() / 1000000000000000000 //The Balance is returned as Wei which is 1/1000000000000000000 Eth. That is the purpose behind the division
+                    val balConv =
+                        balList!!.toDouble() / 1000000000000000000 //The Balance is returned as Wei which is 1/1000000000000000000 Eth. That is the purpose behind the division
                     balText.text = "Balance: " + balConv.toString() + " Eth"
                 }
 
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                     balText.text = t.message
                 }
             })
+        }
 
     }
 

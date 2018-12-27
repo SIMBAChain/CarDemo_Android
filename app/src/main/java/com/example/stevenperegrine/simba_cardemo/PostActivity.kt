@@ -53,19 +53,6 @@ class PostActivity : AppCompatActivity() {
 
     }
 
-  /*  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 1) {
 
-                //Get ImageURi and load with help of picasso
-                //Uri selectedImageURI = data.getData();
-
-                Picasso.with(this@PostActivity).load(data!!.data).noPlaceholder().centerCrop().fit()
-                    .into(findViewById(R.id.postImage) as ImageView)
-            }
-
-        }
-    }*/
 
 }

@@ -18,7 +18,7 @@
             android:id="@+id/button3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/colorAccent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline"/>
+            app:layout_constraintStart_toStartOf="@+id/guideline" android:onClick="gotoimportwallet"/>
     <android.support.constraint.Guideline
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/menuPass"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="96dp"
             android:background="@color/colorPrimary" android:layout_marginStart="96dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText"/>
+            app:layout_constraintTop_toBottomOf="@+id/menuPass" android:onClick="reveal"/>
     <Button
             android:text="SIMBA Dashboard"
             android:layout_width="0dp"
@@ -60,7 +60,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline" android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp" android:background="@color/colorPrimary"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/button7"/>
+            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/button7"
+            android:onClick="openSimbaDashboard"/>
     <Button
             android:text="Source Code"
             android:layout_width="0dp"
@@ -101,7 +102,7 @@
                     android:text="Address:"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView2" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/infoAddress" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/button4"/>
@@ -109,16 +110,16 @@
                     android:text="Seed:"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView4" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/infoSeed" android:textSize="24sp" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+                    app:layout_constraintTop_toBottomOf="@+id/infoPrivateKey"/>
             <TextView
                     android:text="Private Key:"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3" android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/infoPrivateKey" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/infoAddress" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" android:textSize="24sp"/>
         </LinearLayout>
