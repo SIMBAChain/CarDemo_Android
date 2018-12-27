@@ -13,7 +13,13 @@ Installation
 * Step 2
 * Step 3
 * Step 4
-* Step 5
+* Dependencies
+
+
+   * This demo app uses the following:
+   * Retrofit and gson for GETs and POSTs
+   * Web3j, Kethereum, and bitcoinj for the HDwallets
+
 
  .. note:: This is a placeholder note incase it is needed
 ==============
