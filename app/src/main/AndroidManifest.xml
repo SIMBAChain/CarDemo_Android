@@ -11,7 +11,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".GetActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".MainActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
@@ -26,6 +27,7 @@
                     android:value=".MainActivity" />
         </activity>
         <activity android:name=".PostActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".MainActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
@@ -33,6 +35,7 @@
                     android:value=".MainActivity" />
         </activity>
         <activity android:name=".DetailActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".GetActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
@@ -40,6 +43,7 @@
                     android:value=".GetActivity" />
         </activity>
         <activity android:name=".WalletMenuActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".MainActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
@@ -47,6 +51,7 @@
                     android:value=".MainActivity" />
         </activity>
         <activity android:name=".CreateWalletActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".WalletMenuActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data
@@ -54,6 +59,7 @@
                     android:value=".WalletMenuActivity" />
         </activity>
         <activity android:name=".ImportWalletActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".WalletMenuActivity">
             <!-- The meta-getData tag is required if you support API level 15 and lower -->
             <meta-data

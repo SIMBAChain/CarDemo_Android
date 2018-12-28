@@ -70,7 +70,8 @@
             app:layout_constraintStart_toStartOf="@+id/guideline"
             android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:background="@color/colorPrimary"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/button8"/>
+            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/button8"
+            android:onClick="openSource"/>
     <Button
             android:text="Documentation"
             android:layout_width="0dp"
@@ -79,7 +80,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" app:layout_constraintEnd_toStartOf="@+id/guideline"
             android:layout_marginEnd="16dp" android:background="@color/colorPrimary"
-            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/button2"/>
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/button2"
+            android:onClick="openDocs"/>
     <Button
             android:text="Contact Us"
             android:layout_width="0dp"
@@ -88,7 +90,8 @@
             app:layout_constraintStart_toStartOf="@+id/guideline"
             android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:background="@color/colorPrimary"
-            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/button3"/>
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/button3"
+            android:onClick="openContact"/>
     <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="0dp" android:layout_marginTop="8dp"

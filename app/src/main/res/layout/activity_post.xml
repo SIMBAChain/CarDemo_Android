@@ -8,7 +8,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/postMake"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:selectAllOnFocus="true"
@@ -18,21 +18,21 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText5"
+            android:id="@+id/postModel"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:selectAllOnFocus="true"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editText4"/>
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/postMake"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText6"
+            android:id="@+id/postVIN"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText5"/>
+            app:layout_constraintTop_toBottomOf="@+id/postModel"/>
     <Button
             android:text="Post"
             android:layout_width="0dp"
@@ -40,21 +40,21 @@
             android:id="@+id/button10" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent" android:onClick="post"/>
     <Button
             android:text="Take Car Image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button11" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText6" app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/postVIN" app:layout_constraintEnd_toStartOf="@+id/guideline3"
             android:layout_marginEnd="16dp" android:background="@color/colorAccent" android:onClick="TakeCarImage"/>
     <Button
             android:text="Import Car Image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button12" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/editText6"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/postVIN"
             app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="16dp"
             android:background="@color/colorAccent" android:onClick="pickImage"/>
     <android.support.constraint.Guideline
@@ -84,12 +84,21 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView12" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editText4"/>
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/postMake"/>
     <TextView
             android:text="VIN:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView13" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/editText5"/>
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/postModel"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressbarPost"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:visibility="invisible"/>
 </android.support.constraint.ConstraintLayout>

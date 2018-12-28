@@ -43,7 +43,7 @@ class WalletMenuActivity : AppCompatActivity() {
         startActivity(intents)
     }
     public fun openDocs(view:View) {
-        val uris = Uri.parse("https://app.simbachain.com/")
+        val uris = Uri.parse("https://cardemo-android.readthedocs.io/en/latest/")
         val intents = Intent(Intent.ACTION_VIEW, uris)
         val b = Bundle()
         b.putBoolean("new_window", true)
