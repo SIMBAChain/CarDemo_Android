@@ -9,10 +9,12 @@ Installation
 ==============
 
 
-* Step 1
-* Step 2
-* Step 3
-* Step 4
+* Hit the "Clone or Download" button in upper right corner of the github page
+* Hit the "Download ZIP" button.
+* "Extract the file" with your extractor of choice.
+* Open Android Studio and click "Open an existing Android Studio Project."
+* Navigate to where the extracted project is and select the project directory of the project (the one that contains the "app" folder) and hit "OK."
+* After a brief install, Android Studio should open the project.
 * Dependencies
 
 
