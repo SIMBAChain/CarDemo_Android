@@ -56,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
 
         //Image View
         ID = intent.getStringExtra("id")
-        detailIPFS.text = ID
+        detailIPFS.text = "IPFS Bundle Hash: " + ID
 
         val httpClient = OkHttpClient.Builder().build()
 

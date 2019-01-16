@@ -3,7 +3,8 @@ package com.example.stevenperegrine.simba_cardemo
 import android.service.voice.AlwaysOnHotwordDetector
 import java.lang.reflect.Array
 import java.util.*
-import com.squareup.okhttp.RequestBody
+
+import okhttp3.RequestBody
 import com.squareup.okhttp.MediaType
 import org.web3j.abi.datatypes.Bool
 
