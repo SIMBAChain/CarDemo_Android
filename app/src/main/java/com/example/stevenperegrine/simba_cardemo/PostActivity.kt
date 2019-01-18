@@ -47,6 +47,8 @@ import android.util.Log
 import android.widget.ImageView
 import okhttp3.Request
 
+import java.net.URL
+
 
 //import com.squareup.okhttp.RequestBody
 class PostActivity : AppCompatActivity() {
@@ -69,6 +71,7 @@ class PostActivity : AppCompatActivity() {
     fun TakeCarImage(view:View){
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
+
                 startActivityForResult(takePictureIntent, 1)
             }
         }
@@ -128,7 +131,7 @@ class PostActivity : AppCompatActivity() {
             val hardcode = "/storage/emulated/0/Download/CR-Inline-top-picks-Toyota-Yaris-02-17.jpeg"
 
             myImage = hardcode
-            postVIN.setText(File(hardcode).name)
+
 
              val uri = data!!.getData();
              val cr = this.getContentResolver()
@@ -188,6 +191,37 @@ class PostActivity : AppCompatActivity() {
            else
             {
                 progressbarPost.visibility = View.VISIBLE
+
+
+                val url = URL("https://api.simbachain.com/v1/ioscardemo2/registerCar/")
+                val multipart = Multipart(url)
+                multipart.addFormField("Make","droid")
+                multipart.addFormField("Model","droid model")
+                multipart.addFormField("VIN","12345")
+                multipart.addFormField("from",userAddress)
+                    //  multipart.addFilePart()
+                multipart.upload(object : com.example.stevenperegrine.simba_cardemo.Multipart.OnFileUploadedListener{
+                    override fun onFileUploadingSuccess(response: String) {
+                        progressbarPost.visibility = View.INVISIBLE
+                        Toast.makeText(this@PostActivity,  "Good", Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onFileUploadingFailed(responseCode: Int) {
+                        progressbarPost.visibility = View.INVISIBLE
+                        Toast.makeText(this@PostActivity,  responseCode.toString(), Toast.LENGTH_LONG).show()
+                    }
+                })
+
+
+
+
+
+
+
+
+
+
+
 
 /*
                     try {
@@ -257,7 +291,7 @@ class PostActivity : AppCompatActivity() {
 
 
 
-
+/*
                 val formMake = RequestBody.create(MultipartBody.FORM,postMake.text.toString())
                 val formModel = RequestBody.create(MultipartBody.FORM,postModel.text.toString())
                 val formVin = RequestBody.create(MultipartBody.FORM,postVIN.text.toString())
@@ -266,7 +300,6 @@ class PostActivity : AppCompatActivity() {
 
 
              //   val formImage = com.squareup.okhttp.RequestBody.create(com.squareup.okhttp.MediaType.parse("image/jpeg"), File("/storage/emulated/0/Download/CR-Inline-top-picks-Toyota-Yaris-02-17.jpeg"))
-
 
                 val formImage = MultipartBody.Part.createFormData("file[0]", "image.jpeg", RequestBody.create(MediaType.parse("image/jpeg"), File("/storage/emulated/0/Download/CR-Inline-top-picks-Toyota-Yaris-02-17.jpeg")))
 
@@ -287,7 +320,7 @@ class PostActivity : AppCompatActivity() {
                         progressbarPost.visibility = View.INVISIBLE
                     }
                 })
-
+*/
             }
         }
         else
