@@ -193,14 +193,16 @@ class PostActivity : AppCompatActivity() {
                 progressbarPost.visibility = View.VISIBLE
 
 
-                val url = URL("https://api.simbachain.com/v1/ioscardemo2/registerCar/")
+               /* val url = URL("https://api.simbachain.com/v1/ioscardemo2/registerCar/")
                 val multipart = Multipart(url)
                 multipart.addFormField("Make","droid")
                 multipart.addFormField("Model","droid model")
                 multipart.addFormField("VIN","12345")
                 multipart.addFormField("from",userAddress)
                     //  multipart.addFilePart()
+
                 multipart.upload(object : com.example.stevenperegrine.simba_cardemo.Multipart.OnFileUploadedListener{
+
                     override fun onFileUploadingSuccess(response: String) {
                         progressbarPost.visibility = View.INVISIBLE
                         Toast.makeText(this@PostActivity,  "Good", Toast.LENGTH_LONG).show()
@@ -210,7 +212,7 @@ class PostActivity : AppCompatActivity() {
                         progressbarPost.visibility = View.INVISIBLE
                         Toast.makeText(this@PostActivity,  responseCode.toString(), Toast.LENGTH_LONG).show()
                     }
-                })
+                }) */
 
 
 
