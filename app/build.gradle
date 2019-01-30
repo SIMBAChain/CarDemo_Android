@@ -36,6 +36,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'org.web3j:core:3.3.1-android'
     implementation 'com.koushikdutta.ion:ion:2.+'
+
+    implementation 'com.github.kittinunf.fuel:fuel:2.0.1'
+    implementation 'com.github.kittinunf.fuel:fuel-android:2.0.1'
     api('org.bitcoinj:bitcoinj-core:0.14.7'){
                 exclude module: 'scrypt'
             }
