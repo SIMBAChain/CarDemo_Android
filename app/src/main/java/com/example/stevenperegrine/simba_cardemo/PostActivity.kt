@@ -29,7 +29,6 @@ import retrofit2.http.Multipart
 import java.net.URI
 import android.app.PendingIntent.getActivity
 import android.content.Context
-import com.koushikdutta.ion.Ion
 import java.net.URLEncoder
 
 
@@ -49,7 +48,7 @@ import okhttp3.Request
 
 import java.net.URL
 
-import com.koushikdutta.async.http.AsyncHttpClient
+
 import org.json.JSONObject
 
 import com.example.stevenperegrine.simba_cardemo.PostClasses.FileUtils
@@ -59,15 +58,14 @@ import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-//import com.squareup.okhttp.RequestBody
+
 class PostActivity : AppCompatActivity() {
     var isImage = false
     lateinit var myImage: String
     lateinit var mCurrentPhotoPath: String
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val policy : StrictMode.ThreadPolicy =  StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
@@ -140,7 +138,7 @@ class PostActivity : AppCompatActivity() {
             try {
 
 
-                val compressionRatio = 25 //1 == originalImage, 2 = 50% compression, 4=25% compress
+                val compressionRatio = 25
                 val file = File(mCurrentPhotoPath)
                 try {
                     val bitmap = BitmapFactory.decodeFile(file.path)
@@ -257,13 +255,13 @@ class PostActivity : AppCompatActivity() {
                 val image = "/storage/emulated/0/Download/CR-Inline-top-picks-Toyota-Yaris-02-17.jpeg"
 
 
-                PostService().postWithImage(this,postMake.text.toString(),postModel.text.toString(),postVIN.text.toString(),userAddress,File(mCurrentPhotoPath),object : retrofit2.Callback<Models.PostCar>{
+                PostService().postWithImage(this,postMake.text.toString(),postModel.text.toString(),postVIN.text.toString(),userAddress,File(mCurrentPhotoPath), object : retrofit2.Callback<Models.PostCar>{
                     override fun onResponse(call: Call<Models.PostCar>, response: Response<Models.PostCar>) {
-                        progressbarPost.visibility = View.INVISIBLE
+
 
                         if (response.isSuccessful) {
-                            Toast.makeText(this@PostActivity, "It has been posted", Toast.LENGTH_LONG).show()
-                            postVIN.setText(response.body().toString())
+                           // Toast.makeText(this@PostActivity, "It has been posted", Toast.LENGTH_LONG).show()
+                           // postVIN.setText(response.body().toString())
                             signtransaction(response)
 
 
@@ -274,6 +272,7 @@ class PostActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<Models.PostCar>, t: Throwable) {
                         progressbarPost.visibility = View.INVISIBLE
+                        postVIN.setText(t.toString())
                         Toast.makeText(this@PostActivity, "Error: " + t.toString(), Toast.LENGTH_LONG).show()
                     }
 
@@ -292,7 +291,7 @@ class PostActivity : AppCompatActivity() {
 
     //Sign the transaction
     fun signtransaction(response: Response<Models.PostCar>){
-        Toast.makeText(this@PostActivity, "Sign Function Started", Toast.LENGTH_LONG).show()
+
         //Wallet for Signing
         val seedCode = openFileInput("seed").readBytes().toString(charset("UTF8"))
 
@@ -311,7 +310,7 @@ class PostActivity : AppCompatActivity() {
 
         val postPayload = response.body()!!.payload
         //postVIN.setText(response.body().toString())
-/*
+
         val postRaw = postPayload["raw"] as Map<*,*>
 
         val postdata = postRaw["data"] as String
@@ -322,7 +321,7 @@ class PostActivity : AppCompatActivity() {
 
 
         //Sign the transaction
-        Toast.makeText(this@PostActivity, "Wallet Info Done", Toast.LENGTH_LONG).show()
+
         val httpClient = OkHttpClient.Builder().build()
         val builder = Retrofit.Builder()
             .baseUrl("https://api.simbachain.com/v1/ioscardemo2/transaction/"+postid+ "/")
@@ -331,7 +330,7 @@ class PostActivity : AppCompatActivity() {
         val retrofit = builder.client(httpClient).build()
         val client = retrofit.create(Methods::class.java!!)
         val signedmodel :Models.SignedData = Models.SignedData(signedtransaction.toString())
-        Toast.makeText(this@PostActivity, "Defined Model", Toast.LENGTH_LONG).show()
+
 
         val call = client.postsigneddata("",signedmodel)
 
@@ -340,10 +339,12 @@ class PostActivity : AppCompatActivity() {
                   //  progressbarPost.visibility = View.INVISIBLE
                     if (response.code() == 200)
                     {
+                        progressbarPost.visibility = View.INVISIBLE
                         Toast.makeText(this@PostActivity, "Transaction Posted And Signed", Toast.LENGTH_LONG).show()
                     }
                     else
                     {
+                        progressbarPost.visibility = View.INVISIBLE
                         Toast.makeText(this@PostActivity, response.code().toString(), Toast.LENGTH_LONG).show()
                     }
 
@@ -353,7 +354,7 @@ class PostActivity : AppCompatActivity() {
                     progressbarPost.visibility = View.INVISIBLE
                 }
             })
-*/
+
     }
 
 

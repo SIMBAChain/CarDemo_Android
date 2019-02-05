@@ -6,12 +6,12 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-
+import com.example.stevenperegrine.simba_cardemo.Models;
 import java.io.File;
 
 public class PostService {
 
-    public void postWithImage(Context context, String Make,String Model,String VIN,String from, File imageFile, Callback<Response> callback) {
+    public void postWithImage(Context context, String Make,String Model,String VIN,String from, File imageFile, Callback<Models.PostCar> callback) {
 
         // create upload service client
         ApiClient service = ApiClientBuilder.getMGClient();
@@ -43,7 +43,7 @@ public class PostService {
                 RequestBody.create(
                         okhttp3.MultipartBody.FORM, from);
 
-        Call<Response> result =  service.uploadImage(postMake,postModel,postVIN,postFrom, body);
+        Call<Models.PostCar> result =  service.uploadImage(postMake,postModel,postVIN,postFrom, body);
 
         result.enqueue(callback);
 

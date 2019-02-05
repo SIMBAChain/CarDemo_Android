@@ -29,22 +29,25 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     //3rd party dependencies
-    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Needed for Posts and Gets
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //End of what's needed for Posts and Gets
+
+    //Needed For wallets
     implementation 'org.web3j:core:3.3.1-android'
-    implementation 'com.koushikdutta.ion:ion:2.+'
-
-    implementation 'com.github.kittinunf.fuel:fuel:2.0.1'
-    implementation 'com.github.kittinunf.fuel:fuel-android:2.0.1'
     api('org.bitcoinj:bitcoinj-core:0.14.7'){
-                exclude module: 'scrypt'
-            }
+        exclude module: 'scrypt'
+    }
     implementation 'com.github.walleth:kethereum:0.66'
+    //End of What's needed for wallets
 
-    implementation 'com.android.volley:volley:1.1.1'
+    //Makes handling permissions at runtime easier
+    implementation 'com.karumi:dexter:5.0.0'
+
 
     //end 3rd party dependencies
     testImplementation 'junit:junit:4.12'

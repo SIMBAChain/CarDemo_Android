@@ -56,7 +56,7 @@ public class ApiClientBuilder {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()))
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
 

@@ -10,6 +10,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import com.example.stevenperegrine.simba_cardemo.Models;
 
 
 public interface ApiClient {
@@ -17,7 +18,7 @@ public interface ApiClient {
     @Multipart
     @Headers("APIKEY: 0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
     @POST("registerCar/")
-    Call<Response> uploadImage(@Part("Make") RequestBody make,
+    Call<Models.PostCar> uploadImage(@Part("Make") RequestBody make,
                                   @Part("Model") RequestBody model,
                                   @Part("VIN") RequestBody vin,
                                   @Part("from") RequestBody from,

@@ -13,12 +13,49 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.support.v4.app.ActivityCompat
+import java.util.jar.Manifest
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.single.PermissionListener
+import android.Manifest.permission
+import android.content.Context
+import android.content.pm.PackageManager
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
+import android.support.v4.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+        //Check Permissions
+        Dexter.withActivity(this)
+            .withPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {/* ... */
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse) {
+                }
+
+                override fun onPermissionRationaleShouldBeShown(permission: PermissionRequest, token: PermissionToken) {/* ... */
+                }
+            }).check()
+
+
+
+
+
 
         //get Balance
           //  val localAddress = "0x4c01d2810e6E38947addFD6C5A086C2F62da296B"
@@ -44,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             val call = client.bal(urlEnd)
 
 
-            //Requests all getData from from the audits page
+
             call.enqueue(object : Callback<Models.Balance> {
                 override fun onResponse(call: Call<Models.Balance>, response: Response<Models.Balance>) {
                     println(response.body())
@@ -63,7 +100,15 @@ class MainActivity : AppCompatActivity() {
                     }
                     else
                     {
+                        postButton.alpha = 1.0f
                         postButton.isEnabled = true
+
+                        if (ContextCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                            == PackageManager.PERMISSION_DENIED) {
+                            Toast.makeText(this@MainActivity, "Read Storage Permission Denied Please Enable in Settings", Toast.LENGTH_LONG).show()
+                            postButton.isEnabled = false
+                            postButton.alpha = 0.5f
+                        }
                     }
                 }
 
@@ -78,6 +123,8 @@ class MainActivity : AppCompatActivity() {
         {
             Toast.makeText(this@MainActivity, "No wallet found posting disabled", Toast.LENGTH_LONG).show()
         }
+
+
 
     }
 
