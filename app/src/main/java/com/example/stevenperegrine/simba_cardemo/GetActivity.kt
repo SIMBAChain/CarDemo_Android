@@ -1,14 +1,11 @@
 package com.example.stevenperegrine.simba_cardemo
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_get.*
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -105,7 +102,6 @@ class GetActivity : AppCompatActivity() {
                 println(response.body())
                 val resultsArray = response.body()?.results as ArrayList<*>
                 getData = resultsArray
-
 
 
                 //recyclerview  adapter stuff

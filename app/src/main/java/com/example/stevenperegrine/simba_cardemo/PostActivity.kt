@@ -1,9 +1,7 @@
 package com.example.stevenperegrine.simba_cardemo
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-
 import android.view.View
 import android.content.Intent
 import android.provider.MediaStore
@@ -11,10 +9,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_post.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
 import org.bitcoinj.crypto.HDUtils
 import org.bitcoinj.wallet.DeterministicKeyChain
 import org.bitcoinj.wallet.DeterministicSeed
@@ -25,35 +20,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Multipart
-import java.net.URI
-import android.app.PendingIntent.getActivity
-import android.content.Context
-import java.net.URLEncoder
-
-
-import android.app.AlertDialog
-import android.content.ContentResolver
-import android.content.DialogInterface
 import android.graphics.BitmapFactory
 import android.os.Environment
-import android.os.StrictMode
-import android.preference.PreferenceActivity
-import android.provider.DocumentsContract
 import android.support.v4.content.FileProvider
 import android.util.Log
-import android.widget.ImageView
 import com.example.stevenperegrine.simba_cardemo.PostClasses.PostService
-import okhttp3.Request
-
-import java.net.URL
-
-
-import org.json.JSONObject
-
-import com.example.stevenperegrine.simba_cardemo.PostClasses.FileUtils
 import com.example.stevenperegrine.simba_cardemo.PostClasses.ImageFilePath
-import org.spongycastle.asn1.cms.CMSObjectIdentifiers.data
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -171,7 +143,7 @@ class PostActivity : AppCompatActivity() {
 
 
             val realPath = ImageFilePath.getPath(this, data.getData())
-//              realPath = RealPathUtil.getRealPathFromURI_API19(this, data.getData())
+
 
 
             try {
@@ -260,8 +232,7 @@ class PostActivity : AppCompatActivity() {
 
 
                         if (response.isSuccessful) {
-                           // Toast.makeText(this@PostActivity, "It has been posted", Toast.LENGTH_LONG).show()
-                           // postVIN.setText(response.body().toString())
+
                             signtransaction(response)
 
 
@@ -309,7 +280,7 @@ class PostActivity : AppCompatActivity() {
         val credentials = Credentials.create(privKey.toString(16))
 
         val postPayload = response.body()!!.payload
-        //postVIN.setText(response.body().toString())
+
 
         val postRaw = postPayload["raw"] as Map<*,*>
 

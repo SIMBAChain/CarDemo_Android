@@ -1,12 +1,6 @@
 package com.example.stevenperegrine.simba_cardemo
 
-import android.service.voice.AlwaysOnHotwordDetector
-import java.lang.reflect.Array
 import java.util.*
-
-import okhttp3.RequestBody
-import com.squareup.okhttp.MediaType
-import org.web3j.abi.datatypes.Bool
 
 object Models {
     data class Balance(val status: String,
@@ -17,7 +11,7 @@ object Models {
                        val next: Any,
                        val previous: Any,
                        val results: Any
-                     //  val results: MutableMap<String,Any>
+
                        )
 
     data class GetImage(val bundle_hash: String,

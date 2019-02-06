@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-
-import kotlinx.android.synthetic.main.activity_createwallet.*
 import org.web3j.crypto.*
 import org.bitcoinj.crypto.HDUtils
 import org.bitcoinj.wallet.DeterministicKeyChain

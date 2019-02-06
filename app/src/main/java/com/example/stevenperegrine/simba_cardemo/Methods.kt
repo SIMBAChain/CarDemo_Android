@@ -1,16 +1,12 @@
 package com.example.stevenperegrine.simba_cardemo
 
-import android.graphics.Bitmap
-import android.media.Image
+
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Multipart
-
-import retrofit2.http.PUT
-
 import org.web3j.abi.datatypes.Utf8String
 import retrofit2.http.Headers
 
@@ -41,20 +37,8 @@ interface Methods {
     @POST("registerCar/")
     fun postCar(@Field("Make") Make: Utf8String, @Field("Model") Model: Utf8String, @Field("VIN") VIN: Utf8String, @Field("from") from: Utf8String): Call<Models.PostCar>
 
-    //Posting to Register Car With Image
+    //Sign Data
     @Headers("APIKEY: 0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
-    //@FormUrlEncoded
-    @Multipart
-    @POST("registerCar/")
-    fun postCarandImage(@Part("Make") Make: RequestBody,
-                        @Part("Model") Model: RequestBody,
-                        @Part("VIN") VIN: RequestBody,
-                        @Part("from") from: RequestBody,
-                        @Part file: MultipartBody.Part): Call<Models.PostCar>
-
-
-//Sign Data
-   @Headers("APIKEY: 0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
     @POST()
     fun postsigneddata(@Url url:String, @Body signedData: Models.SignedData): Call<Models.SignedData>
 

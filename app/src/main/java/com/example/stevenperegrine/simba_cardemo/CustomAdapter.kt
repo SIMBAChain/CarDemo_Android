@@ -1,15 +1,12 @@
 package com.example.stevenperegrine.simba_cardemo
 
-import android.app.PendingIntent.getActivity
+
 import android.content.Intent
 import android.content.Context
 import android.support.v7.widget.*
 import android.view.*
 import android.widget.*
-import android.support.v4.content.ContextCompat.startActivity
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView.OnItemTouchListener
-import org.w3c.dom.Text
+
 
 class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>()
 {
@@ -76,7 +73,7 @@ class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyVie
         val textViewVin = itemView.findViewById<TextView>(R.id.vin)
         val textViewId = itemView.findViewById<TextView>(R.id.id)
         val parentLayout = itemView.findViewById<RelativeLayout>(R.id.parent_layout)
-      //  val textViewLocation = itemView.findViewById<TextView>(R.id.location)
+
 
     }
 }

@@ -13,18 +13,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import android.support.v4.app.ActivityCompat
-import java.util.jar.Manifest
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.single.PermissionListener
-import android.Manifest.permission
-import android.content.Context
 import android.content.pm.PackageManager
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener
 import android.support.v4.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
@@ -58,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
 
         //get Balance
-          //  val localAddress = "0x4c01d2810e6E38947addFD6C5A086C2F62da296B"
         postButton.isEnabled = false
         if (fileList().contains("address")) {
 

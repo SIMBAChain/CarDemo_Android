@@ -1,11 +1,9 @@
 package com.example.stevenperegrine.simba_cardemo
 
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-
 import kotlinx.android.synthetic.main.activity_createwallet.*
 import org.web3j.crypto.*
 import org.bitcoinj.crypto.HDUtils
@@ -14,7 +12,6 @@ import org.bitcoinj.wallet.DeterministicSeed
 import org.kethereum.bip39.generateMnemonic
 import org.kethereum.bip39.wordlists.WORDLIST_ENGLISH
 import android.content.Context
-import kotlinx.android.synthetic.main.activity_importwallet.*
 
 
 class CreateWalletActivity : AppCompatActivity() {
@@ -33,7 +30,6 @@ class CreateWalletActivity : AppCompatActivity() {
             if (passField.text.toString() == passFieldRep.text.toString())
             {
                 val seedCode = generateMnemonic(128, WORDLIST_ENGLISH)
-                // val seedCode = "jeans absorb curve mimic task apology green ability cake eyebrow report inner"
 
                 // BitcoinJ
                 val seed = DeterministicSeed(seedCode, null, "", 1409478661L)
