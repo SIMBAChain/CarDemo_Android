@@ -76,7 +76,6 @@ Before Starting make sure you have an account on the Simba Dashboard and an Ethe
    :align:   center
 Converting the Cardemo example to your app
 ***************
-Steps to convert Android cardemo to your own version of the cardemo
    * Updating the URL
       * In ApiClientBuilder.java ~Line 16
       * In GetActivity.kt ~Line 37 and ~Line 87
