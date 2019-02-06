@@ -77,15 +77,15 @@ Before Starting make sure you have an account on the Simba Dashboard and an Ethe
 Converting the Cardemo example to your app
 ***************
 Steps to convert Android cardemo to your own version of the cardemo
-   *Updating the URL
-      *In ApiClientBuilder.java ~Line 16
-      *In GetActivity.kt ~Line 37 and ~Line 87
-      *In DetailActivity.kt ~Line 63
-      *In PostActivity.kt ~Line 196 and ~Line 298
+   * Updating the URL
+      * In ApiClientBuilder.java ~Line 16
+      * In GetActivity.kt ~Line 37 and ~Line 87
+      * In DetailActivity.kt ~Line 63
+      * In PostActivity.kt ~Line 196 and ~Line 298
        .. note:: The only part of the URL you need to change is "ioscardemo2" with whatever you chose for your app's API name(not the name of your apikey)
-   *Updating API Key
-      *In Methods.kt ~Line 20, ~Line 2, ~Line 30, ~Line 35, and ~Line 41
-      *In ApiClient.java ~Line 19
+   * Updating API Key
+      * In Methods.kt ~Line 20, ~Line 2, ~Line 30, ~Line 35, and ~Line 41
+      * In ApiClient.java ~Line 19
       
       
   
