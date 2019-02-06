@@ -2,7 +2,7 @@
    :align:   center
    
 ******************
-SIMBA CarDemo Android Docs currenctly a placeholder please come back later :)
+SIMBA CarDemo Android Docs
 ******************
  
 Installation
@@ -19,11 +19,12 @@ Installation
 
 
    * This demo app uses the following:
-   * Retrofit and gson for GETs and POSTs
+   * Retrofit, okhttp, and gson for GETs and POSTs
    * Web3j, Kethereum, and bitcoinj for the HDwallets
+   * Dexter for making permissions easier to handle at run time.
 
 
- .. note:: This is a placeholder note incase it is needed
+ .. note:: HDwallets are not setup to be encrypted when stored locally. This should be addressed for any usage apart from demo purposes.
 ==============
 
 `Here <https://www.youtube.com/watch?v=1BatYaRD60c&list=PLgfX2jfDfJNMEqF_xjZBYmavONXeRK_q5>`_ is a playlist on the SIMBA Chain Youtube channel to get you up to speed on using the dashboard.
@@ -75,4 +76,15 @@ Before Starting make sure you have an account on the Simba Dashboard and an Ethe
    :align:   center
 Converting the Cardemo example to your app
 ***************
-Steps to convert Android cardemo to your own
+   * Updating the URL
+      * In ApiClientBuilder.java ~Line 16
+      * In GetActivity.kt ~Line 37 and ~Line 87
+      * In DetailActivity.kt ~Line 63
+      * In PostActivity.kt ~Line 196 and ~Line 298
+       .. note:: The only part of the URL you need to change is "ioscardemo2" with whatever you chose for your app's API name(not the name of your apikey)
+   * Updating API Key
+      * In Methods.kt ~Line 20, ~Line 2, ~Line 30, ~Line 35, and ~Line 41
+      * In ApiClient.java ~Line 19
+      
+      
+  
