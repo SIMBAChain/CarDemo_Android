@@ -135,14 +135,14 @@ class PostActivity : AppCompatActivity() {
 
 
             val imageUri = data?.data
-            var imagePath: String = data?.data!!.path
+
 
 
             myImage = imageUri.toString()
 
 
 
-            val realPath = ImageFilePath.getPath(this, data.getData())
+            val realPath = ImageFilePath.getPath(this, data?.getData())
 
 
 
@@ -224,7 +224,7 @@ class PostActivity : AppCompatActivity() {
            else
             {
                 progressbarPost.visibility = View.VISIBLE
-                val image = "/storage/emulated/0/Download/CR-Inline-top-picks-Toyota-Yaris-02-17.jpeg"
+
 
 
                 PostService().postWithImage(this,postMake.text.toString(),postModel.text.toString(),postVIN.text.toString(),userAddress,File(mCurrentPhotoPath), object : retrofit2.Callback<Models.PostCar>{
