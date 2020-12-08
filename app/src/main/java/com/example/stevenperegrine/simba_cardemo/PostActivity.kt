@@ -26,6 +26,10 @@ import android.support.v4.content.FileProvider
 import android.util.Log
 import com.example.stevenperegrine.simba_cardemo.PostClasses.PostService
 import com.example.stevenperegrine.simba_cardemo.PostClasses.ImageFilePath
+import jnr.ffi.provider.ResultType
+import org.web3j.crypto.RawTransaction
+import org.web3j.crypto.TransactionEncoder
+import org.web3j.utils.Numeric
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -106,6 +110,11 @@ class PostActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Toast.makeText(this, "Result Code: " + resultCode.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Result Code: " + RESULT_OK.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Result Code: " + RESULT_CANCELED.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Result Code: " + RESULT_FIRST_USER.toString(), Toast.LENGTH_SHORT).show()
+
         if (requestCode == 1 && resultCode == RESULT_OK) {
             try {
 
@@ -160,7 +169,7 @@ class PostActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         } else {
-            Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show()
+
         }
 
         }
@@ -211,7 +220,7 @@ class PostActivity : AppCompatActivity() {
 
             var response = call.enqueue(object : Callback<Models.PostCar> {
                 override fun onResponse(call: Call<Models.PostCar>, response: Response<Models.PostCar>) {
-                   // Toast.makeText(this@PostActivity,  response.body()!!.payload.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@PostActivity,  response.body()!!.payload.toString(), Toast.LENGTH_LONG).show()
                     response.raw().toString()
                     signtransaction(response)
 
@@ -232,7 +241,7 @@ class PostActivity : AppCompatActivity() {
 
 
                         if (response.isSuccessful) {
-
+                            Toast.makeText(this@PostActivity, "start sign", Toast.LENGTH_LONG).show()
                             signtransaction(response)
 
 
@@ -262,15 +271,12 @@ class PostActivity : AppCompatActivity() {
 
     //Sign the transaction
     fun signtransaction(response: Response<Models.PostCar>){
-
+        Toast.makeText(this@PostActivity, "start sign func", Toast.LENGTH_LONG).show()
         //Wallet for Signing
         val seedCode = openFileInput("seed").readBytes().toString(charset("UTF8"))
-
-
         // BitcoinJ
         val seed = DeterministicSeed(seedCode, null, "", 1409478661L)
         val chain = DeterministicKeyChain.builder().seed(seed).build()
-
 
         val keyPath = HDUtils.parsePath("M/44H/60H/0H/0/0")
         val key = chain.getKeyByPath(keyPath, true)
@@ -278,21 +284,24 @@ class PostActivity : AppCompatActivity() {
 
         // Web3j
         val credentials = Credentials.create(privKey.toString(16))
-
         val postPayload = response.body()!!.payload
-
-
         val postRaw = postPayload["raw"] as Map<*,*>
-
-        val postdata = postRaw["data"] as String
         val postid = response.body()!!.id
 
-        val signedtransaction = credentials.ecKeyPair.sign(postdata.toByteArray()).r
+        // Create the Transaction
+        val strippedGasPrice = postRaw["gasPrice"].toString().subSequence(2,postRaw["gasPrice"].toString().length).toString()
+        val strippedGasLimit = postRaw["gasLimit"].toString().subSequence(2,postRaw["gasLimit"].toString().length).toString()
+        val strippedNonce = postRaw["nonce"].toString().subSequence(2,postRaw["nonce"].toString().length).toString()
 
+        val gasPriceBigInt = strippedGasPrice.toBigInteger(16)
+        val gasLimitBigInt = strippedGasLimit.toBigInteger(16)
+        val nonceBigInt = strippedNonce.toBigInteger(16)
 
+        val rawTransaction: RawTransaction = RawTransaction.createTransaction(nonceBigInt,gasPriceBigInt,gasLimitBigInt,postRaw["to"].toString(),postRaw["data"].toString())
+        val signedMessage: ByteArray = TransactionEncoder.signMessage(rawTransaction,credentials)
+        val hexValue = Numeric.toHexString(signedMessage)
 
         //Sign the transaction
-
         val httpClient = OkHttpClient.Builder().build()
         val builder = Retrofit.Builder()
             .baseUrl("https://api.simbachain.com/v1/ioscardemo2/transaction/"+postid+ "/")
@@ -300,8 +309,7 @@ class PostActivity : AppCompatActivity() {
 
         val retrofit = builder.client(httpClient).build()
         val client = retrofit.create(Methods::class.java!!)
-        val signedmodel :Models.SignedData = Models.SignedData(signedtransaction.toString())
-
+        val signedmodel :Models.SignedData = Models.SignedData(hexValue)
 
         val call = client.postsigneddata("",signedmodel)
 
@@ -318,9 +326,7 @@ class PostActivity : AppCompatActivity() {
                         progressbarPost.visibility = View.INVISIBLE
                         Toast.makeText(this@PostActivity, response.code().toString(), Toast.LENGTH_LONG).show()
                     }
-
                 }
-
                 override fun onFailure(call: Call<Models.SignedData>, t: Throwable) {
                     progressbarPost.visibility = View.INVISIBLE
                 }

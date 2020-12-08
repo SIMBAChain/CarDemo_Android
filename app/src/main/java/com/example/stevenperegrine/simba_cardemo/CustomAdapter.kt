@@ -27,7 +27,11 @@ class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyVie
     override fun onBindViewHolder(p0: MyViewHolder, p1: Int) {
         //binds the getData to the recycler view
             val dataList: Map<*,*> = adapterData!![p1] as Map<*, *>
+
+
+
             val resultsPayload = dataList["payload"] as Map<*, *>
+       
             val resultsInputs = resultsPayload["inputs"] as Map<*, *>
             val resultsMake = resultsInputs["Make"] as String
             val resultsModel = resultsInputs["Model"] as String
@@ -45,7 +49,14 @@ class CustomAdapter(context: Context) : RecyclerView.Adapter<CustomAdapter.MyVie
             val tranFrom = resultsRaw["from"] as String
             val tranTo = resultsRaw["to"] as String
             val tranStatus = dataList["status"] as String
-            val gasUsed = resultsRaw["gas"] as Double
+
+            var gasUsed:Double =  0.0
+
+             if (dataList["receipt"] != null) {
+                 val resultsReceipt = dataList["receipt"] as Map<*,*>
+                 gasUsed = resultsReceipt["gasUsed"] as Double
+            }
+
 
             //id for getting image
             val tranId = dataList["id"] as String

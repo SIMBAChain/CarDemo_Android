@@ -1,18 +1,18 @@
 package com.example.stevenperegrine.simba_cardemo
 
+import android.R.attr.src
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
+import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_detail.*
-import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.*
+
 
 class DetailActivity : AppCompatActivity() {
     var make:String = ""
@@ -43,7 +43,7 @@ class DetailActivity : AppCompatActivity() {
         tranFrom = intent.getStringExtra("tranFrom")
         tranTo = intent.getStringExtra("tranTo")
         tranStatus = intent.getStringExtra("tranStatus")
-        gasUsed = intent.getDoubleExtra("gasUsed",0.0)
+        gasUsed = intent.getDoubleExtra("gasUsed", 0.0)
 
         transactionHash.text = "Transaction Hash: " + tranHash
         transactionFrom.text = "Transaction From: " + tranFrom
@@ -55,44 +55,23 @@ class DetailActivity : AppCompatActivity() {
         ID = intent.getStringExtra("id")
         detailIPFS.text = "IPFS Bundle Hash: " + ID
 
-        val httpClient = OkHttpClient.Builder().build()
+        // Disable the `NetworkOnMainThreadException` and make sure it is just logged.
+        StrictMode
+            .setThreadPolicy(StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build())
+
+        val url = URL("https://api.simbachain.com/v1/ioscardemo2/transaction/"+ ID +"/file/0/")
+        val connection: HttpURLConnection = url
+            .openConnection() as HttpURLConnection
+
+        connection.setDoInput(true)
+        connection.setRequestProperty("APIKEY", "0ce2c6f644fa15bfb25520394392af4f835153a6be1beff0c096988d647a97c4")
+        connection.connect()
+        val input: InputStream = connection.getInputStream()
+        val myBitmap = BitmapFactory.decodeStream(input)
+        imageView.setImageBitmap(myBitmap)
 
 
 
-        val builder = Retrofit.Builder()
-            .baseUrl("https://api.simbachain.com/v1/ioscardemo2/transaction/"+ ID +"/bundle/")
-            .addConverterFactory(GsonConverterFactory.create())
-        val retrofit = builder.client(httpClient).build()
-        val client = retrofit.create(Methods::class.java!!)
-        val call = client.getCarImage("")
-
-
-        call.enqueue(object : Callback<Models.GetImage> {
-            override fun onResponse(call: Call<Models.GetImage>, response: Response<Models.GetImage>) {
-
-                if (response.body() != null)
-                {
-                    val manifestArray = response.body()?.manifest?.get(0)
-                    val manifestDict = manifestArray as Map<*, *>
-
-                    detailImageName.text = "Image Name: " + manifestDict["name"].toString()
-                    detailImageSize.text = "Image Size: " + manifestDict["size"].toString() + " bytes"
-                    val encodedImage = manifestDict["data"] as String
-                    val imageByteArray = Base64.getDecoder().decode(encodedImage)
-                    val decodedImage = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
-                    imageView.setImageBitmap(decodedImage)
-                }
-                else
-                {
-                    Toast.makeText(this@DetailActivity, "Image not available for this transaction", Toast.LENGTH_LONG).show()
-                }
-
-            }
-
-            override fun onFailure(call: Call<Models.GetImage>, t: Throwable) {
-
-            }
-        })
     }
     fun infoToggle(view: View)
     {

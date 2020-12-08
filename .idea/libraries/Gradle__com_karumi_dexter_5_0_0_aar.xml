@@ -3,6 +3,9 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dexter-5.0.0.aar/e1c3689a491d5e8b3d1584989865843f/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dexter-5.0.0.aar/e1c3689a491d5e8b3d1584989865843f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dexter-5.0.0.aar/d098e74f78280e01dccad548e869a52d/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dexter-5.0.0.aar/d098e74f78280e01dccad548e869a52d/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dexter-5.0.0.aar/d098e74f78280e01dccad548e869a52d/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

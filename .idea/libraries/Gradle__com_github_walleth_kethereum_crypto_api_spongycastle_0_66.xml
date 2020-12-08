@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.walleth.kethereum:crypto_api_spongycastle:0.66">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.walleth.kethereum/crypto_api_spongycastle/0.66/7750cb845048b822727bb8c20ba13615b2335df3/crypto_api_spongycastle-0.66.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.walleth.kethereum/crypto_api_spongycastle/0.66/7aa65feec6e05014e9c1e894b996a9ee3c36fa32/crypto_api_spongycastle-0.66-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
